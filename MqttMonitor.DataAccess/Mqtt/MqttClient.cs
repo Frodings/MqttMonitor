@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MqttMonitor.Core;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Client.Connecting;
 using MQTTnet.Client.Options;
 using MQTTnet.Client.Subscribing;
 
-namespace MqttMonitor.Core
+namespace MqttMonitor.DataAccess
 {
     public class MqttClient
     {

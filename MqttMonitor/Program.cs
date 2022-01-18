@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MqttMonitor.Core;
+using MqttMonitor.DataAccess;
 
 namespace MqttMonitor
 {

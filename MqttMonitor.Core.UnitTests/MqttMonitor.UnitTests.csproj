@@ -60,6 +60,10 @@
       <Project>{d2ee5478-89ea-46ec-bb2e-3ae3f68363b9}</Project>
       <Name>MqttMonitor.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MqttMonitor.DataAccess\MqttMonitor.DataAccess.csproj">
+      <Project>{60a04a81-0f7e-43ba-a3f6-e830a79689cf}</Project>
+      <Name>MqttMonitor.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

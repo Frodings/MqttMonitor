@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using MqttMonitor.DataAccess;
 
-namespace MqttMonitor.Core.UnitTests
+namespace MqttMonitor.UnitTests
 {
     public class TestableMqttClient : MqttClient
     {

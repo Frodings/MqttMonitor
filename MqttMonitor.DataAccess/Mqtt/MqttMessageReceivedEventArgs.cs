@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MqttMonitor.Core
+namespace MqttMonitor.DataAccess
 {
     public class MqttMessageReceivedEventArgs : EventArgs
     {

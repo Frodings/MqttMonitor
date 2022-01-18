@@ -4,33 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{194CB2F9-BBFD-4151-BE51-A5C2243DF43A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MqttMonitor</RootNamespace>
-    <AssemblyName>MqttMonitor</AssemblyName>
+    <ProjectGuid>{60A04A81-0F7E-43BA-A3F6-E830A79689CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MqttMonitor.DataAccess</RootNamespace>
+    <AssemblyName>MqttMonitor.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -40,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -49,10 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MQTTnet, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b69712f52770c0a7, processorArchitecture=MSIL">
+      <HintPath>..\packages\MQTTnet.3.1.1\lib\net461\MQTTnet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,37 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISecret.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="DB\SqlStatWriter.cs" />
+    <Compile Include="Mqtt\MqttClient.cs" />
+    <Compile Include="Mqtt\MqttMessageReceivedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Secret.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MqttMonitor.Core\MqttMonitor.Core.csproj">
       <Project>{d2ee5478-89ea-46ec-bb2e-3ae3f68363b9}</Project>
       <Name>MqttMonitor.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MqttMonitor.DataAccess\MqttMonitor.DataAccess.csproj">
-      <Project>{60A04A81-0F7E-43BA-A3F6-E830A79689CF}</Project>
-      <Name>MqttMonitor.DataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

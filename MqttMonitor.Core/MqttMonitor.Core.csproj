@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MQTTnet, Version=3.0.16.0, Culture=neutral, PublicKeyToken=b69712f52770c0a7, processorArchitecture=MSIL">
-      <HintPath>..\packages\MQTTnet.3.0.16\lib\net461\MQTTnet.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,15 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleLogger.cs" />
-    <Compile Include="DataAccess\IStatWriter.cs" />
-    <Compile Include="DataAccess\SqlStatWriter.cs" />
+    <Compile Include="IStatWriter.cs" />
     <Compile Include="ILogger.cs" />
-    <Compile Include="DataAccess\MqttClient\MqttClient.cs" />
-    <Compile Include="DataAccess\MqttClient\MqttMessageReceivedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

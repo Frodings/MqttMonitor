@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MqttMonitor.Core;
 
-namespace MqttMonitor.Core.DataAccess
+namespace MqttMonitor.DataAccess
 {
-    class SqlStatWriter : IStatWriter
+    public class SqlStatWriter : IStatWriter
     {
     }
 }

@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using MqttMonitor.Core;
+using MqttMonitor.DataAccess;
 
-namespace MqttMonitor.Core.UnitTests
+namespace MqttMonitor.UnitTests
 {
     [TestFixture]
     public class MqttClientTests
@@ -19,7 +20,7 @@ namespace MqttMonitor.Core.UnitTests
         {
             TestableMqttClient client = new TestableMqttClient();
             MqttMessageReceivedEventArgs msgEventArgs = client.GetMessageReceivedEventArgs();
-
+             
             Assert.True(msgEventArgs.ReceivedTime.Kind == DateTimeKind.Utc);
             Assert.True(msgEventArgs.ReceivedTime == msgEventArgs.ReceivedTime.ToUniversalTime());
         }
