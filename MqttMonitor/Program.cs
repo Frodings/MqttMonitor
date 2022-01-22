@@ -9,7 +9,7 @@ using MqttMonitor.DataAccess;
 
 namespace MqttMonitor
 {
-    //client
+    
     class Program
     {
         static void Main(string[] args)
@@ -22,23 +22,23 @@ namespace MqttMonitor
             string username = credentials[1];
             string password = credentials[2];
 
-            MqttClient client = CreateMqttClient(mqttServer, mqttPort, username, password);
-            client.SetLogger(new ConsoleLogger());
-            client.MessageReceived += client_MessageReceived;
+            IMqttService mqttService = CreateMqttService(mqttServer, mqttPort, username, password);
+            mqttService.SetLogger(new ConsoleLogger());
+            mqttService.MessageReceived += MqttService_MessageReceived;
 
-            RunAsync(client).GetAwaiter().GetResult();
+            RunAsync(mqttService).GetAwaiter().GetResult();
         }
 
-        static async Task RunAsync(MqttClient client)
+        static async Task RunAsync(IMqttService service)
         {
-           await client.ConnectAsync();
+           await service.ConnectAsync();
 
            Console.ReadLine();
 
-           await client.DisconnectAsync();            
+           await service.DisconnectAsync();            
         }
 
-        private static MqttClient CreateMqttClient(string server, int port, string user, string pw)
+        private static IMqttService CreateMqttService(string server, int port, string user, string pw)
         {
             List<string> topics = new List<string>()
             {
@@ -47,14 +47,14 @@ namespace MqttMonitor
                 "$SYS/broker/load/publish/sent/1min"
             };
 
-            MqttClient client = new MqttClient("mqttMonitor", server, port, topics);
+            IMqttService client = new MqttService("mqttMonitor", server, port, topics);
             client.SetCredentials(user, pw);
             client.SetOptions(useTLS: true);
 
             return client;
         }
 
-        private static void client_MessageReceived(object sender, MqttMessageReceivedEventArgs e)
+        private static void MqttService_MessageReceived(object sender, MqttMessageReceivedEventArgs e)
         {
             Console.WriteLine(e.ReceivedTime.ToString("s"));
             Console.WriteLine(e.Topic);
@@ -65,7 +65,7 @@ namespace MqttMonitor
 
         private static string[] GetCredentials()
         {
-            // temporary - placeholder until proper way to store and handle credentials is implemented
+            // temporary - placeholder until proper way to handle credentials is implemented
             return Environment.GetCommandLineArgs();
         }
 

@@ -3,7 +3,7 @@ using MqttMonitor.DataAccess;
 
 namespace MqttMonitor.UnitTests
 {
-    public class TestableMqttClient : MqttClient
+    public class TestableMqttClient : MqttService
     {
         public TestableMqttClient()
             : base("", "", 1883, null)

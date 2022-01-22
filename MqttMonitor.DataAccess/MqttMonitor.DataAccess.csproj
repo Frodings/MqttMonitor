@@ -45,7 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\SqlStatWriter.cs" />
-    <Compile Include="Mqtt\MqttClient.cs" />
+    <Compile Include="Mqtt\IMqttService.cs" />
+    <Compile Include="Mqtt\MqttService.cs" />
     <Compile Include="Mqtt\MqttMessageReceivedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

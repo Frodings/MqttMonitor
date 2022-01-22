@@ -13,7 +13,7 @@ using MQTTnet.Client.Subscribing;
 
 namespace MqttMonitor.DataAccess
 {
-    public class MqttClient
+    public class MqttService : IMqttService
     {
         private readonly string _clientId;
         private readonly string _serverAddress;
@@ -25,7 +25,7 @@ namespace MqttMonitor.DataAccess
         private ILogger _logger;
         private IMqttClient _client;
 
-        public MqttClient(string clientId, string serverAddress, int serverPort, IEnumerable<string> subscribeTopics)
+        public MqttService(string clientId, string serverAddress, int serverPort, IEnumerable<string> subscribeTopics)
         {
             _clientId = clientId;
             _serverAddress = serverAddress;
